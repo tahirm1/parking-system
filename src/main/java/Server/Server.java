@@ -23,6 +23,8 @@ import java.io.PrintWriter;
 import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.time.Duration;
+import java.time.Instant;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.apache.commons.lang3.SerializationUtils;
@@ -43,9 +45,9 @@ public class Server {
     private final int PORT = 7777;
 
     private final ParkingService service;
-    
-    // Week 9 addition 
-    
+
+    // Week 9 addition
+
     private Duration cumulativeDuration = Duration.ZERO;
 
     private int connectionCount = 0;
@@ -65,15 +67,15 @@ public class Server {
         logger.info("Starting server: " + InetAddress.getLocalHost().getHostAddress());
         try ( ServerSocket serverSocket = new ServerSocket(PORT)) {
             serverSocket.setReuseAddress(true);
-            while (true) {
+            while (true) { //TO DO - add a condition so this isn't an infinite loop
                 Socket client = serverSocket.accept();
                 handleClient(client);
-                
-                //week 9 addition 
-                
+
+                //week 9 addition
+
                 Instant start = Instant.now();
 
-                Runnable r = new ClientHandler(client, getService());
+                Runnable r = new ClientHandler(client, service);
                 new Thread(r).start();
 
                 Instant done = Instant.now();
@@ -88,7 +90,7 @@ public class Server {
                 System.out.println("    "
                         + (cumulativeDuration.toNanos() / connectionCount)
                         + " ns. per connection");
-                
+
             }
         }
     }
@@ -121,7 +123,7 @@ public class Server {
     }
 
     /**
-     * 
+     *
      */
     public static void main(String[] args) throws Exception {
 //    ParkingOffice parkingOffice = new ParkingOffice("Office", new Address());

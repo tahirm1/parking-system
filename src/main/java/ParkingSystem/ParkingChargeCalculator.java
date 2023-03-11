@@ -4,7 +4,7 @@
  */
 package ParkingSystem;
 
-import parkingsystem.ParkingEvent;
+import ParkingSystem.ParkingEvent;
 
 /**
  *

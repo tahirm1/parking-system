@@ -6,7 +6,7 @@ package ParkingSystem;
 
 import ParkingSystem.Money;
 import ParkingSystem.ParkingLot;
-import SarkingSystem.ParkingPermit;
+import ParkingSystem.ParkingPermit;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.Objects;
