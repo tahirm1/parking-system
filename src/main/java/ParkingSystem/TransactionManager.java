@@ -21,7 +21,7 @@ import ParkingSystem.ParkingObserver;
  *
  * @author mariatahir
  */
-public class TransactionManager extends ParkingObserver{
+public class TransactionManager implements ParkingObserver{
 
     private List<ParkingTransaction> transactions = new ArrayList<>();
 

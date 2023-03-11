@@ -11,8 +11,7 @@ import ParkingSystem.ParkingEvent;
  * @author mariatahir
  */
 //TO DO -  THIS FUNCTION IS DECLARED BUT PERFORMS NO ACTIONS
-public class ParkingObserver {
-    public void onParkingEventReceived(ParkingEvent event) {
-
-    };
+public interface ParkingObserver {
+    public void onParkingEventReceived(ParkingEvent event);
+    public ParkingTransaction park(ParkingEvent event);
 }
