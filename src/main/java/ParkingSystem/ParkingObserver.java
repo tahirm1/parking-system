@@ -10,6 +10,8 @@ import ParkingSystem.ParkingEvent;
  *
  * @author mariatahir
  */
-public class ParkingObserver {
+//TO DO -  THIS FUNCTION IS DECLARED BUT PERFORMS NO ACTIONS
+public interface ParkingObserver {
     public void onParkingEventReceived(ParkingEvent event);
+    public ParkingTransaction park(ParkingEvent event);
 }

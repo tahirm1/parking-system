@@ -4,8 +4,8 @@
  */
 package ParkingSystem;
 
-import parkingsystem.VehicleTypeDiscount;
-import parkingsystem.WeekdayDiscount;
+import ParkingSystem.VehicleTypeDiscount;
+import ParkingSystem.WeekdayDiscount;
 import java.io.Serializable;
 
 
@@ -15,25 +15,27 @@ import java.io.Serializable;
  */
 public class ParkingChargeCalculatorFactory implements Serializable {
 
+  // variables
+    BaseParkingChargeCalculator parkingCalculator = new BaseParkingChargeCalculator();
+
     public ParkingChargeCalculator getParkingChargeCalculator(String strategy) {
-        
         if ("WeekdayDiscount".equalsIgnoreCase(strategy)) {
 
             System.out.println("WeekdayDiscountCaculator created");
-            return new WeekdayDiscount(new BasePakingChargeCalculator());
+            return new WeekdayDiscount(parkingCalculator);
 
         } else if ("CarTypeDiscount".equalsIgnoreCase(strategy)) {
 
             System.out.println("CarTypeDiscount created");
-            return new VehicleTypeDiscount(new BasePakingChargeCalculator());
+            return new VehicleTypeDiscount(parkingCalculator);
 
         } else if ("WeekdayCarTypeDiscount".equalsIgnoreCase(strategy)) {
 
             System.out.println("WeekdayDiscount and CarTypeDiscount created");
-            return new WeekdayDiscount(new VehicleTypeDiscount(new BasePakingChargeCalculator()));
+            return new WeekdayDiscount(new VehicleTypeDiscount(parkingCalculator));
         } else if (strategy == null) {
             System.out.println("Base calculator created");
-            return new BasePakingChargeCalculator();
+            return parkingCalculator;
         }
         return null;
     }

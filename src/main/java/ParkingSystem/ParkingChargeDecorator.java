@@ -4,7 +4,7 @@
  */
 package ParkingSystem;
 
-import parkingsystem.ParkingEvent;
+import ParkingSystem.ParkingEvent;
 
 import java.io.Serializable;
 
@@ -27,3 +27,4 @@ public abstract class ParkingChargeDecorator implements ParkingChargeCalculator,
         return calc.getDiscount(parkingEvent);
 
     }
+  }
